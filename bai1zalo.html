@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <style>
+        form {
+            width: 430px;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-label {
+            width: 140px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        select {
+            width: 220px;
+            box-sizing: border-box;
+        }
+
+        .gender-options {
+            display: flex;
+            gap: 12px;
+        }
+        .button-row {
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <table border="3" cellspacing="0" cellpadding="10">
+        <form>
+            <tr>
+                <td>
+                    <div class="form-row">
+                        <label class="form-label" for="name">Enter name:</label>
+                        <input id="name" type="text">
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label" for="password">Enter password:</label>
+                        <input id="password" type="password">
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label" for="email">Enter email:</label>
+                        <input id="email" type="email">
+                    </div>
+                    <div class="form-row">
+                        <span class="form-label">Enter gender:</span>
+                        <span class="gender-options">
+                            <label><input type="radio" name="gender" value="male"> Male</label>
+                            <label><input type="radio" name="gender" value="female"> Female</label>
+                        </span>
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label" for="country">Select country:</label>
+                        <select id="country">
+                            <option>India</option>
+                            <option>Vietnam</option>
+                            <option>Japan</option>
+                            <option>Korea</option>
+                            <option>Cuba</option>
+                        </select>
+                    </div>
+                    <div class="button-row">
+                        <button type="submit" id="register">Register</button>
+                    </div>
+                </td>
+            </tr>
+
+        </form>
+    </table>
+</body>
+</html>
