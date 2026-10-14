@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function togglelight() {
+            let toggle = document.getElementById("bulb");
+            if (toggle.src.includes("bulbon.gif")) {
+                toggle.src = "tat.png";
+            } else {
+                toggle.src = "bulbon.gif";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Chương trình bật / tắt bóng đèn</h2>
+    <img id="bulb" src="bulboff.gif" width="20%" >
+    <br> <br>
+    <button id="bulbon" onclick="togglelight()">Bật/tắt đèn</button>
+</body>
+</html>

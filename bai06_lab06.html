@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Chương trình trò chơi Oẳn tù tì</h2>
+    <label for="choice">Chọn: Búa, Kéo, Bao:</label>
+    <br><br>
+    <button onclick="playGame()">Kéo</button>
+    <button onclick="playGame()">Búa</button>
+    <button onclick="playGame()">Giấy</button>
+    <h3 id="result"></h3>
+    <script>
+        function playGame() {
+            const choices = ["Kéo", "Búa", "Giấy"];
+            const userChoice = event.target.innerText;
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+            let result = "";
+            if (userChoice === computerChoice) {
+                result = "Hòa! Cả hai đều chọn " + userChoice;
+            } else if (
+                (userChoice === "Kéo" && computerChoice === "Giấy") ||
+                (userChoice === "Búa" && computerChoice === "Kéo") ||
+                (userChoice === "Giấy" && computerChoice === "Búa")
+            ) {
+                result = "Bạn thắng! Bạn chọn " + userChoice + ", máy chọn " + computerChoice;
+            } else {
+                result = "Bạn thua! Bạn chọn " + userChoice + ", máy chọn " + computerChoice;
+            }
+
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+</body>
+</html>

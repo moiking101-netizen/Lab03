@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Chương trình xếp loại học lực</h2>
+    <label for="score">Nhập điểm trung bình của bạn:</label>
+    <input type="number" id="score">
+    <br><br>
+    <lable for="cc">Nhập điểm hạnh kiểm:</lable>
+    <input type="number" id="cc">
+    <br><br>
+    <button onclick="xeploai()">Xếp loại</button>
+    <h3 id="result"></h3>
+    <script>
+        function xeploai() {
+            let score = Number(document.getElementById("score").value);
+            let cc = Number(document.getElementById("cc").value);
+            let result = "";
+            if (score >= 9 && cc >= 9) {
+                result = "Học lực: Xuất sắc";
+            } else if (score >= 8 && cc >= 8) {
+                result = "Học lực: Giỏi";
+            } else if (score >= 7 && cc >= 7) {
+                result = "Học lực: Khá";
+            } else if (score >= 5 && cc >= 5) {
+                result = "Học lực: Trung bình";
+            } else {
+                result = "Học lực: Yếu";
+            }
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+
+
+</body>
+</html>

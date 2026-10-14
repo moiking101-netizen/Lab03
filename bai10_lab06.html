@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Máy tính đơn giản</h2>
+    <label for="num1">Nhập số thứ nhất:</label>
+    <input type="number" id="num1">
+    <br><br>
+    <label for="operator">Chọn phép tính:</label>
+    <select id="operator">
+        <option value="+">Cộng</option>
+        <option value="-">Trừ</option>
+        <option value="*">Nhân</option>
+        <option value="/">Chia</option>
+    </select>
+    <br><br>
+    <label for="num2">Nhập số thứ hai:</label>
+    <input type="number" id="num2">
+    <br><br>
+    <button onclick="tinhtoan()">=</button>
+    <h3 id="result"></h3>
+    <script>
+        function tinhtoan() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let operator = document.getElementById("operator").value;
+            let result;
+
+            switch (operator) {
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    break;
+                case "/":
+                    if (num2 !== 0) {
+                        result = num1 / num2;
+                    } else {
+                        result = "Không thể chia cho 0";
+                    }
+                    break;
+                default:
+                    result = "Phép tính không hợp lệ";
+            }
+
+            document.getElementById("result").innerHTML = "Kết quả: " + result;
+        }
+    </script>
+</body>
+</html>

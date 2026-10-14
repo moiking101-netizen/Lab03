@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>  ❤️ XEM BÓI TÌNH YÊU ❤️  </h2>
+    <label for="name">Nhập tên bạn</label>
+    <input type="text" id="tenban" >
+    <br><br>
+    <label for="name">Nhập tên người ấy</label>
+    <input type="text" id="tennguoiay" >
+    <br><br>
+    <button onclick="xemketqua()">Xem kết quả</button>
+    <h3 id="ketqua"></h3>
+
+
+    <script>
+        function xemketqua() {
+            let tenban = document.getElementById("tennguoiay").value;
+            let tennguoiay = document.getElementById("tennguoiay").value;
+            let diem = Math.floor(Math.random() * 100) + 1;
+            if (diem > 50) {
+                document.getElementById("ketqua").innerHTML = 
+                tenban + " và " + tennguoiay + " có tỷ lệ hợp nhau là: " + diem + "%";
+            } else {
+                document.getElementById("ketqua").innerHTML = 
+                tenban + " và " + tennguoiay + " không hợp nhau lắm, tỷ lệ hợp nhau là: " + diem + "%";
+            }
+        }
+    </script>
+</body>
+</html>

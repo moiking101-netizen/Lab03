@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .logo {
+            width: 2%;
+        }
+    </style>
+    <script>
+        let age = 0;
+
+        function calculateAge() {
+            let birthYear = Number(document.getElementById("birthyear").value);
+            let currentYear = new Date().getFullYear();
+            age = currentYear - birthYear;
+            document.getElementById("result").innerHTML = "Tuổi của bạn là: " + age;
+            rating();
+        }
+
+        function rating() {
+            let rate = document.getElementById("rate");
+            if (age < 18) {
+                rate.src = "kid.png";
+            } else if (age >= 18 && age < 40) {
+                rate.src = "adult.png";
+            } else if (age >= 60 && age < 80) {
+                rate.src = "old.png"
+            } else if (age >= 80) {
+                rate.src = "dead.png"
+            }
+        }
+    </script>
+</head>
+<body>
+    <img class="logo" src="logo.png" width="20%">
+    <h2>CHƯƠNG TRÌNH TÍNH TUỔI</h2>
+        <br> <br>
+        <label for="birthyear">Nhập năm sinh của bạn:</label>
+        <input type="number" id="birthyear">
+        <br> <br>
+        <button type="button" onclick="calculateAge()">Tính tuổi</button>
+        <p id="result"></p>
+        <img id="rate" src="gg.png">
+</body>
+</html>
