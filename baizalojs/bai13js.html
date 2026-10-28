@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 13 - Calculate Grade</title>
+</head>
+<body>
+    <h2>BÀI 13: XẾP LOẠI ĐIỂM</h2>
+    <label for="array">Nhập mảng điểm số (cách nhau bằng dấu phẩy):</label>
+    <input type="text" id="array" placeholder="90, 85, 78">
+    <button type="button" onclick="calculate()">Tính xếp loại</button>
+    <p id="result" aria-live="polite"></p>
+    <script>
+        function calculateGrade(scores) {
+            if (scores.length === 0) throw new Error("Mảng điểm không được để trống.");
+            let total = 0;
+            for (let i = 0; i < scores.length; i++) total += scores[i];
+            const average = total / scores.length;
+            let grade;
+            if (average >= 90) grade = "A";
+            else if (average >= 80) grade = "B";
+            else if (average >= 70) grade = "C";
+            else if (average >= 60) grade = "D";
+            else grade = "F";
+            return grade;
+        }
+
+        function calculate() {
+            const input = document.getElementById("array").value.trim();
+            const result = document.getElementById("result");
+            if (input === "") {
+                result.textContent = "Vui lòng nhập mảng điểm.";
+                return;
+            }
+            const scores = input.split(",").map(value => Number(value.trim()));
+            if (scores.some(score => !Number.isFinite(score))) {
+                result.textContent = "Vui lòng chỉ nhập các điểm số hợp lệ, cách nhau bằng dấu phẩy.";
+                return;
+            }
+            result.textContent = `Xếp loại: ${calculateGrade(scores)}`;
+        }
+    </script>
+</body>
+</html>

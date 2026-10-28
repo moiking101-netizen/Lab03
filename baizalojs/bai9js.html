@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 9 - Alternate Sum</title>
+</head>
+<body>
+    <h2>BÀI 9: TÍNH TỔNG XEN KẼ</h2>
+    <label for="array">Nhập mảng số (cách nhau bằng dấu phẩy):</label>
+    <input type="text" id="array" placeholder="10, 5, 6, 3">
+    <button type="button" onclick="calculate()">Tính tổng xen kẽ</button>
+    <p id="result" aria-live="polite"></p>
+    <script>
+        function alternateSum(numbers) {
+            let sum = 0;
+            for (let i = 0; i < numbers.length; i++) {
+                sum += i % 2 === 0 ? numbers[i] : -numbers[i];
+            }
+            return sum;
+        }
+
+        function calculate() {
+            const input = document.getElementById("array").value.trim();
+            const result = document.getElementById("result");
+            if (input === "") {
+                result.textContent = "Vui lòng nhập một mảng số.";
+                return;
+            }
+            const numbers = input.split(",").map(value => Number(value.trim()));
+            if (numbers.some(number => !Number.isFinite(number))) {
+                result.textContent = "Vui lòng chỉ nhập các số hợp lệ, cách nhau bằng dấu phẩy.";
+                return;
+            }
+            result.textContent = `Tổng xen kẽ là: ${alternateSum(numbers)}`;
+        }
+    </script>
+</body>
+</html>

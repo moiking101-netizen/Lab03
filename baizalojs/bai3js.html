@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3 - Find Min</title>
+</head>
+<body>
+    <h2>BÀI 3: TÌM SỐ NHỎ NHẤT</h2>
+    <label for="array">Nhập mảng số (cách nhau bằng dấu phẩy):</label>
+    <input type="text" id="array" placeholder="5, 2, 8, 1, 4">
+    <button type="button" onclick="calculate()">Tìm số nhỏ nhất</button>
+    <p id="result" aria-live="polite"></p>
+    <script>
+        function findMin(numbers) {
+            if (numbers.length === 0) throw new Error("Mảng không được để trống.");
+            let min = numbers[0];
+            for (let i = 1; i < numbers.length; i++) {
+                if (numbers[i] < min) min = numbers[i];
+            }
+            return min;
+        }
+
+        function calculate() {
+            const input = document.getElementById("array").value.trim();
+            const result = document.getElementById("result");
+            if (input === "") {
+                result.textContent = "Vui lòng nhập một mảng số.";
+                return;
+            }
+            const numbers = input.split(",").map(value => Number(value.trim()));
+            if (numbers.some(number => !Number.isFinite(number))) {
+                result.textContent = "Vui lòng chỉ nhập các số hợp lệ, cách nhau bằng dấu phẩy.";
+                return;
+            }
+            result.textContent = `Số nhỏ nhất là: ${findMin(numbers)}`;
+        }
+    </script>
+</body>
+</html>

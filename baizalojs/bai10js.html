@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 10 - Sum of Squares</title>
+</head>
+<body>
+    <h2>BÀI 10: TÍNH TỔNG BÌNH PHƯƠNG</h2>
+    <label for="array">Nhập mảng số nguyên (cách nhau bằng dấu phẩy):</label>
+    <input type="text" id="array" placeholder="1, 2, 3">
+    <button type="button" onclick="calculate()">Tính tổng bình phương</button>
+    <p id="result" aria-live="polite"></p>
+    <script>
+        function sumOfSquares(numbers) {
+            let sum = 0;
+            for (let i = 0; i < numbers.length; i++) sum += numbers[i] * numbers[i];
+            return sum;
+        }
+
+        function calculate() {
+            const input = document.getElementById("array").value.trim();
+            const result = document.getElementById("result");
+            if (input === "") {
+                result.textContent = "Vui lòng nhập một mảng số nguyên.";
+                return;
+            }
+            const numbers = input.split(",").map(value => Number(value.trim()));
+            if (numbers.some(number => !Number.isSafeInteger(number))) {
+                result.textContent = "Vui lòng chỉ nhập các số nguyên hợp lệ, cách nhau bằng dấu phẩy.";
+                return;
+            }
+            result.textContent = `Tổng bình phương là: ${sumOfSquares(numbers)}`;
+        }
+    </script>
+</body>
+</html>

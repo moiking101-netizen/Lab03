@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 7 - Is Ascending</title>
+</head>
+<body>
+    <h2>BÀI 7: KIỂM TRA DÃY TĂNG DẦN</h2>
+    <label for="array">Nhập mảng số (cách nhau bằng dấu phẩy):</label>
+    <input type="text" id="array" placeholder="1, 2, 3, 5">
+    <button type="button" onclick="calculate()">Kiểm tra</button>
+    <p id="result" aria-live="polite"></p>
+    <script>
+        function isAscending(numbers) {
+            if (numbers.length < 2) return false;
+            for (let i = 1; i < numbers.length; i++) {
+                if (numbers[i] <= numbers[i - 1]) return false;
+            }
+            return true;
+        }
+
+        function calculate() {
+            const input = document.getElementById("array").value.trim();
+            const numbers = input === "" ? [] : input.split(",").map(value => Number(value.trim()));
+            const result = document.getElementById("result");
+            if (numbers.some(number => !Number.isFinite(number))) {
+                result.textContent = "Vui lòng chỉ nhập các số hợp lệ, cách nhau bằng dấu phẩy.";
+                return;
+            }
+            result.textContent = `Mảng tăng dần: ${isAscending(numbers)}`;
+        }
+    </script>
+</body>
+</html>

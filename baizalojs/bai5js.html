@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 5 - Sum Array</title>
+</head>
+<body>
+    <h2>BÀI 5: TÍNH TỔNG MẢNG</h2>
+    <label for="array">Nhập mảng số (cách nhau bằng dấu phẩy):</label>
+    <input type="text" id="array" placeholder="1, 2, 3, 4, 5">
+    <button type="button" onclick="calculate()">Tính tổng</button>
+    <p id="result" aria-live="polite"></p>
+    <script>
+        function sumArray(numbers) {
+            let sum = 0;
+            for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+            return sum;
+        }
+
+        function calculate() {
+            const input = document.getElementById("array").value.trim();
+            const result = document.getElementById("result");
+            if (input === "") {
+                result.textContent = "Vui lòng nhập một mảng số.";
+                return;
+            }
+            const numbers = input.split(",").map(value => Number(value.trim()));
+            if (numbers.some(number => !Number.isFinite(number))) {
+                result.textContent = "Vui lòng chỉ nhập các số hợp lệ, cách nhau bằng dấu phẩy.";
+                return;
+            }
+            result.textContent = `Tổng mảng là: ${sumArray(numbers)}`;
+        }
+    </script>
+</body>
+</html>

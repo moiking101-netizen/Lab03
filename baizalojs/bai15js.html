@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 15 - Remove Duplicates</title>
+</head>
+<body>
+    <h2>BÀI 15: LOẠI BỎ PHẦN TỬ TRÙNG LẶP</h2>
+    <label for="array">Nhập các phần tử (cách nhau bằng dấu phẩy):</label>
+    <input type="text" id="array" placeholder="1, 2, 2, 3, 4, 4, 5">
+    <button type="button" onclick="calculate()">Loại bỏ trùng lặp</button>
+    <p id="result" aria-live="polite"></p>
+    <script>
+        function removeDuplicates(items) {
+            const uniqueItems = [];
+            for (let i = 0; i < items.length; i++) {
+                let alreadyExists = false;
+                for (let j = 0; j < uniqueItems.length; j++) {
+                    if (items[i] === uniqueItems[j]) {
+                        alreadyExists = true;
+                        break;
+                    }
+                }
+                if (!alreadyExists) uniqueItems.push(items[i]);
+            }
+            return uniqueItems;
+        }
+
+        function calculate() {
+            const input = document.getElementById("array").value.trim();
+            const result = document.getElementById("result");
+            if (input === "") {
+                result.textContent = "Vui lòng nhập một mảng.";
+                return;
+            }
+            const items = input.split(",").map(item => item.trim());
+            if (items.some(item => item === "")) {
+                result.textContent = "Vui lòng không để trống phần tử; các phần tử cần cách nhau bằng dấu phẩy.";
+                return;
+            }
+            result.textContent = `Mảng sau khi loại bỏ trùng lặp: ${JSON.stringify(removeDuplicates(items))}`;
+        }
+    </script>
+</body>
+</html>

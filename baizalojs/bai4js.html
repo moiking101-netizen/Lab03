@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 4 - Count Positive Numbers</title>
+</head>
+<body>
+    <h2>BÀI 4: ĐẾM SỐ DƯƠNG</h2>
+    <label for="array">Nhập mảng số (cách nhau bằng dấu phẩy):</label>
+    <input type="text" id="array" placeholder="-1, 2, 3, -4, 5">
+    <button type="button" onclick="calculate()">Đếm số dương</button>
+    <p id="result" aria-live="polite"></p>
+    <script>
+        function countPositiveNumbers(numbers) {
+            let count = 0;
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] > 0) count++;
+            }
+            return count;
+        }
+
+        function calculate() {
+            const input = document.getElementById("array").value.trim();
+            const result = document.getElementById("result");
+            if (input === "") {
+                result.textContent = "Vui lòng nhập một mảng số.";
+                return;
+            }
+            const numbers = input.split(",").map(value => Number(value.trim()));
+            if (numbers.some(number => !Number.isFinite(number))) {
+                result.textContent = "Vui lòng chỉ nhập các số hợp lệ, cách nhau bằng dấu phẩy.";
+                return;
+            }
+            result.textContent = `Số lượng số dương là: ${countPositiveNumbers(numbers)}`;
+        }
+    </script>
+</body>
+</html>

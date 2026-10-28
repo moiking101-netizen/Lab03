@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 12 - Find Longest Word</title>
+</head>
+<body>
+    <h2>BÀI 12: TÌM TỪ DÀI NHẤT</h2>
+    <label for="array">Nhập các từ (cách nhau bằng dấu phẩy):</label>
+    <input type="text" id="array" placeholder="apple, banana, cherry, date">
+    <button type="button" onclick="calculate()">Tìm từ dài nhất</button>
+    <p id="result" aria-live="polite"></p>
+    <script>
+        function findLongestWord(words) {
+            if (words.length === 0) return "";
+            let longest = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if (words[i].length > longest.length) longest = words[i];
+            }
+            return longest;
+        }
+
+        function calculate() {
+            const input = document.getElementById("array").value.trim();
+            const result = document.getElementById("result");
+            if (input === "") {
+                result.textContent = "Vui lòng nhập ít nhất một từ.";
+                return;
+            }
+            const words = input.split(",").map(word => word.trim());
+            if (words.some(word => word === "")) {
+                result.textContent = "Vui lòng không để trống từ; các từ cần cách nhau bằng dấu phẩy.";
+                return;
+            }
+            result.textContent = `Từ dài nhất là: ${findLongestWord(words)}`;
+        }
+    </script>
+</body>
+</html>

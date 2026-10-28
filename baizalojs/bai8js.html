@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 8 - Count Greater Than</title>
+</head>
+<body>
+    <h2>BÀI 8: ĐẾM SỐ LỚN HƠN GIÁ TRỊ</h2>
+    <label for="array">Nhập mảng số:</label>
+    <input type="text" id="array" placeholder="1, 5, 7, 2, 3">
+    <label for="value">Nhập value:</label>
+    <input type="text" id="value" placeholder="3">
+    <button type="button" onclick="calculate()">Đếm</button>
+    <p id="result" aria-live="polite"></p>
+    <script>
+        function countGreaterThan(numbers, value) {
+            let count = 0;
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] > value) count++;
+            }
+            return count;
+        }
+
+        function calculate() {
+            const input = document.getElementById("array").value.trim();
+            const valueText = document.getElementById("value").value.trim();
+            const result = document.getElementById("result");
+            const numbers = input === "" ? [] : input.split(",").map(item => Number(item.trim()));
+            const value = Number(valueText);
+            if (valueText === "" || !Number.isFinite(value) || numbers.some(number => !Number.isFinite(number))) {
+                result.textContent = "Vui lòng nhập mảng số hợp lệ và một value hợp lệ.";
+                return;
+            }
+            result.textContent = `Số phần tử lớn hơn ${value} là: ${countGreaterThan(numbers, value)}`;
+        }
+    </script>
+</body>
+</html>

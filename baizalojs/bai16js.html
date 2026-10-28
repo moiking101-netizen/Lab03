@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 16 - Find Pairs With Sum</title>
+</head>
+<body>
+    <h2>BÀI 16: TÌM CÁC CẶP CÓ TỔNG BẰNG GIÁ TRỊ</h2>
+    <label for="array">Nhập mảng số nguyên:</label>
+    <input type="text" id="array" placeholder="1, 2, 3, 4, 5">
+    <label for="target">Nhập tổng cần tìm:</label>
+    <input type="text" id="target" placeholder="5">
+    <button type="button" onclick="calculate()">Tìm các cặp số</button>
+    <p id="result" aria-live="polite"></p>
+    <script>
+        function findPairsWithSum(numbers, target) {
+            const pairs = [];
+            for (let i = 0; i < numbers.length; i++) {
+                for (let j = i + 1; j < numbers.length; j++) {
+                    if (numbers[i] + numbers[j] === target) {
+                        pairs.push([numbers[i], numbers[j]]);
+                    }
+                }
+            }
+            return pairs;
+        }
+
+        function calculate() {
+            const input = document.getElementById("array").value.trim();
+            const targetText = document.getElementById("target").value.trim();
+            const result = document.getElementById("result");
+            const numbers = input === "" ? [] : input.split(",").map(value => Number(value.trim()));
+            const target = Number(targetText);
+            if (targetText === "" || !Number.isSafeInteger(target) ||
+                numbers.some(number => !Number.isSafeInteger(number))) {
+                result.textContent = "Vui lòng nhập mảng số nguyên và tổng cần tìm là số nguyên hợp lệ.";
+                return;
+            }
+            result.textContent = `Các cặp số là: ${JSON.stringify(findPairsWithSum(numbers, target))}`;
+        }
+    </script>
+</body>
+</html>
